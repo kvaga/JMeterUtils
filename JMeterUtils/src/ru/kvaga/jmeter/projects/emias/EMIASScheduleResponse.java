@@ -14,4 +14,23 @@ public class EMIASScheduleResponse {
 
 //	@JsonView(Views.Normal.class)
 	private String id;
+	
+	public String getJsonrpc() {
+		return jsonrpc;
+	}
+	public void setJsonrpc(String jsonrpc) {
+		this.jsonrpc=jsonrpc;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id=id;
+	}
+	public EMIASScheduleResult getResult() {
+		return result;
+	}
+	public void setResult(EMIASScheduleResult result) {
+		this.result=result;
+	}
 }

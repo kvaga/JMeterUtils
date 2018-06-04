@@ -1,5 +1,5 @@
 {
-	"jsonrpc1": "2.0",
+	"jsonrpc": "2.0",
 	"result": {
 		"doctorSpecialityCode": "6",
 		"schedules": [
@@ -414,10 +414,10 @@
 				}
 			}
 		],
-		"doctorSpeciality": "Врач-офтальмолог",
-		"doctorFio": "Чередниченко Ольга Геннадиевна",
+		"doctorSpeciality": "Р’СЂР°С‡-РѕС„С‚Р°Р»СЊРјРѕР»РѕРі",
+		"doctorFio": "Р§РµСЂРµРґРЅРёС‡РµРЅРєРѕ РћР»СЊРіР° Р“РµРЅРЅР°РґРёРµРІРЅР°",
 		"lpuId": "172",
-		"availableResourceName": "Чередниченко О.Г. Ф.1 (ГП59)",
+		"availableResourceName": "Р§РµСЂРµРґРЅРёС‡РµРЅРєРѕ Рћ.Р“. Р¤.1 (Р“Рџ59)",
 		"availableResourceId": "10327189"
 	},
 	"id": "D4TU4DZtE~lWv58mF9elG"
