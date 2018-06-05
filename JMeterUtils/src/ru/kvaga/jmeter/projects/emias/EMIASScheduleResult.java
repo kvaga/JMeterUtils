@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class EMIASScheduleResult {
 	private int doctorSpecialityCode;
-	private ArrayList<EMIASTimePeriod> schedules;
+	private ArrayList<EMIASSchedule> schedules;
 	private String doctorSpeciality;
 	private String doctorFio;
 	private int lpuId;
@@ -16,10 +16,10 @@ public class EMIASScheduleResult {
 	public void setDoctorSpecialityCode(int doctorSpecialityCode) {
 		this.doctorSpecialityCode = doctorSpecialityCode;
 	}
-	public ArrayList<EMIASTimePeriod> getSchedules() {
+	public ArrayList<EMIASSchedule> getSchedules() {
 		return schedules;
 	}
-	public void setSchedules(ArrayList<EMIASTimePeriod> schedules) {
+	public void setSchedules(ArrayList<EMIASSchedule> schedules) {
 		this.schedules = schedules;
 	}
 	public String getDoctorSpeciality() {
