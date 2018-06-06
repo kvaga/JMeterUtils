@@ -52,4 +52,6 @@ public class EMIASScheduleResult {
 	public void setAvailableResourceId(int availableResourceId) {
 		this.availableResourceId = availableResourceId;
 	}
+
+	
 }

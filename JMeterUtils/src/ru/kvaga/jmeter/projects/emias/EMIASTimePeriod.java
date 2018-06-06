@@ -24,4 +24,6 @@ public class EMIASTimePeriod {
 	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
+	
+	
 }

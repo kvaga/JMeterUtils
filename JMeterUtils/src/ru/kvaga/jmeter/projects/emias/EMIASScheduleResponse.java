@@ -33,4 +33,5 @@ public class EMIASScheduleResponse {
 	public void setResult(EMIASScheduleResult result) {
 		this.result=result;
 	}
+	
 }

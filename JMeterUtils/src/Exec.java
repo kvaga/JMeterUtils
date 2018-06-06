@@ -1,7 +1,13 @@
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import ru.kvaga.jmeter.projects.emias.EMIASResourceSchedule;
 import ru.kvaga.jmeter.projects.emias.EMIASSchedule;
@@ -16,41 +22,54 @@ public class Exec {
 		 */
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-		System.out.println("sdfsdf");
-		try {
+		System.out.println("----");
+		try { 
 
 			// Convert JSON string from file to Object
-			EMIASScheduleResponse response = mapper.readValue(new File("src/example.json"),
-					EMIASScheduleResponse.class);
+			EMIASScheduleResponse response = mapper.readValue(new File("src/example.json"),	EMIASScheduleResponse.class);
 			
-			System.out.println("jsonrpcid: " + response.getJsonrpc());
-			System.out.println("Result->AvailableResourceId: "+response.getResult().getAvailableResourceId());
-			System.out.println("Result->AvailableResourceName: " + response.getResult().getAvailableResourceName());
-			System.out.println("Result->DoctorFio: " + response.getResult().getDoctorFio());
-			System.out.println("Result->DoctorSpeciality: " + response.getResult().getDoctorSpeciality());
-			System.out.println("Result->DoctorSpecialityCode: " + response.getResult().getDoctorSpecialityCode());
-			System.out.println("Result->LpuId: " + response.getResult().getLpuId());
-			System.out.println("Schedules: " + response.getResult().getSchedules());
-			for(EMIASSchedule schedule: response.getResult().getSchedules()) {
-//				System.out.println("Schedules->Result->Schedules->Date: " + schedule.getDate());
-				EMIASResourceSchedule resourceSchedule = new EMIASResourceSchedule();
-				System.out.println("CabinetName: " + resourceSchedule.getCabinetName());
-				System.out.println(": " + resourceSchedule.getComplexResourceId());
-				System.out.println(": " + resourceSchedule.getWorkTime());
-				System.out.println(": " + for(EMIASTimePeriod timePeriod : resourceSchedule.getTimePeriods()){
-					
-				}
-				
-			}
+			// Enable pretty JSON output
+			mapper.enable(SerializationFeature.INDENT_OUTPUT);
 			
-			System.out.println("Result->Schedules->StartTime: " + timePeriod.getStartTime());
-			System.out.println("Result->Schedules->EndTime: " + timePeriod.getEndTime());
-			System.out.println("Result->Schedules->AllowedAppointment: " + timePeriod.getAllowedAppointment());
-			System.out.println("id: " + response.getId());
+			// Convert Object to JSON String and print
+			System.out.println(mapper.writeValueAsString(response));
+			
+			scenario(response);
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
+	}
+	
+	static void scenario(EMIASScheduleResponse response) throws ParseException {
+		SimpleDateFormat sdfDay = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdfDayTime = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+		String strDate="2018-06-15";
+		String strStartTime="19:13:00";
+		String strEndTime="21:00:00";
+		
+		Date date = sdfDay.parse(strDate);
+		Date startTime = sdfDayTime.parse(strDate + " " + strStartTime);
+		Date endTime = sdfDayTime.parse(strDate + " " + strEndTime);
+		
+		System.out.println("Date and time: ");
+		System.out.println("Date: " + date);
+		System.out.println("StartTime: " + startTime);
+		System.out.println("EndTime" + endTime);
+		// Finding required date
+		for(EMIASSchedule schedule : response.getResult().getSchedules()) {
+			if(schedule.getDate().equals(date)) {
+				System.out.println("Дата обнаружена: " + date);
+				// Finding required time period
+				for(EMIASTimePeriod timePeriod : schedule.getResourceSchedule().getTimePeriods()) {
+//					if()) {
+//						
+//					}
+				}
+			}
+		}
+		
 	}
 	
 
